@@ -1,4 +1,5 @@
 #include <SDL2/SDL_rect.h>
+#include <SDL2/SDL_surface.h>
 #include <SDL2/SDL_video.h>
 #include <unistd.h>
 #include <SDL2/SDL.h>
@@ -12,7 +13,7 @@ int main() {
 		return -1;
 	}
 
-	SDL_Window *win = NULL;
+	SDL_Window *win = nullptr;
 	win = SDL_CreateWindow("Tic Tac Toe", 100, 100, 1080, 720, SDL_WINDOW_SHOWN );
 	if (win == NULL)
 	{
@@ -20,8 +21,10 @@ int main() {
 		return -1;
 	}
 
-	SDL_Surface* winSurface = NULL; 
+	SDL_Surface* winSurface = nullptr; 
+	SDL_Surface* image = SDL_LoadBMP("just_a.bmp");
 	winSurface = SDL_GetWindowSurface(win);
+    SDL_BlitSurface(image, nullptr, winSurface, nullptr);
 	SDL_Rect rects[4];
 	rects[0].x = 100;
 	rects[0].y = 100;
